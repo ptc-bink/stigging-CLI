@@ -7,6 +7,8 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
   const [addServerModalOpen, setAddServerModalOpen] = useState(false);
   const [editServerModalOpen, setEditServerModalOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [serverID, setServerID] = useState("");
+  const [userID, setUserID] = useState("");
 
 
   return (
@@ -15,6 +17,10 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
         addServerModalOpen,
         editServerModalOpen,
         profileModalOpen,
+        serverID,
+        userID,
+        setServerID,
+        setUserID,
         setAddServerModalOpen,
         setEditServerModalOpen,
         setProfileModalOpen,

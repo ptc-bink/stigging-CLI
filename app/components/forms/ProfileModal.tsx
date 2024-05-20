@@ -2,32 +2,38 @@
 
 import React, { useState, useContext } from "react";
 import Image from "next/image";
-import Dropdown from "./Dropdown";
-
-import { marketChannelIdList, generalChannelIdList } from "@/app/utils/_data";
 
 import Cancel from "@/public/avatar/close.svg"
 import AppContext from "@/app/providers/AppContext";
+import { editUserDetails } from "@/app/hooks/test/user-detail";
 
 const ProfileModal: React.FC<ProfileModalProps> = () => {
 
-    const { setProfileModalOpen } = useContext(AppContext);
-    const [marketChannelId, setMarketChannelId] = useState<string>("");
-    const [generalChannelId, setGeneralChannelId] = useState<string>("");
+    const { setProfileModalOpen, serverID, userID, setServerID, setUserID } = useContext(AppContext);
+    const [ethHot, setEthHot] = useState<string>("");
+    const [ethCold, setEthCold] = useState<string>("");
+    const [sol, setSol] = useState<string>("");
+    const [btc, setBtc] = useState<string>("");
 
     const closeProfileModal = () => {
         setProfileModalOpen(false);
     }
 
-    const handleSave = () => {
-        console.log("handleSave");
+    const handleEdit = async () => {
+        console.log("ethHot ====>", ethHot);
+        console.log("ethCold ====>", ethCold);
+        console.log("btc ====>", btc);
+        console.log("sol ====>", sol);
+
+        await editUserDetails(ethHot, ethCold, btc, sol);
+
         closeProfileModal();
     }
 
     return (
         <div className="flex flex-col w-[450px] rounded-md p-6 gap-6 border border-cgrey-200 bg-cgrey-100">
             <div className="flex justify-between gap-4">
-                <p className="text-base text-white font-semibold">Server Details</p>
+                <p className="text-base text-white font-semibold">User Profile</p>
                 <div onClick={closeProfileModal} className="cursor-pointer">
                     <Image
                         src={Cancel}
@@ -39,23 +45,34 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
             </div>
             <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-2">
-                    <p className="text-sm font-normal text-white">Redis Key</p>
-                    <input type="text" placeholder="Input redis key" className="outline-none placeholder:text-sm placeholder:font-normal px-3 py-[10px] rounded-md bg-[#141518] border border-[#292A2E] text-white" />
+                    <p className="text-sm font-normal text-white">Server ID</p>
+                    <input type="text" placeholder="Input Server ID" value={serverID} onChange={(e) => { setServerID(e.target.value) }} className="outline-none placeholder:text-sm placeholder:font-normal px-3 py-[10px] rounded-md bg-[#141518] border border-[#292A2E] text-white" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <p className="text-sm font-normal text-white">Market Channel ID</p>
-                    <Dropdown dropdownList={marketChannelIdList} placeholder="Select market ID" callback={setMarketChannelId} className="hover:bg-cdark-200 bg-cdark-100" />
+                    <p className="text-sm font-normal text-white">User ID</p>
+                    <input type="text" placeholder="Input User ID" value={userID} onChange={(e) => setUserID(e.target.value)} className="outline-none placeholder:text-sm placeholder:font-normal px-3 py-[10px] rounded-md bg-[#141518] border border-[#292A2E] text-white" />
                 </div>
-                <div className="flex flex-col gap-2">
-                    <p className="text-sm font-normal text-white">General Channel ID</p>
-                    <Dropdown dropdownList={generalChannelIdList} placeholder="Select general ID" callback={setMarketChannelId} className="hover:bg-cdark-200 bg-cdark-100" />
-                </div>
-                <div className="flex flex-col gap-2">
-                    <p className="text-sm font-normal text-white">Date</p>
-                    <input type="date" className="outline-none placeholder:text-sm placeholder:font-normal px-3 py-[10px] rounded-md bg-[#141518] border border-[#292A2E] text-white" />
+                <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-2">
+                        <p className="text-sm font-normal text-white">ETH HOT*</p>
+                        <input type="text" placeholder="Input User ID" onChange={(e) => setEthCold(e.target.value)} value={ethHot} className="outline-none placeholder:text-sm placeholder:font-normal px-3 py-[10px] rounded-md bg-[#141518] border border-[#292A2E] text-white" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <p className="text-sm font-normal text-white">ETH COLD*</p>
+                        <input type="number" placeholder="0" onChange={(e) => setEthCold(e.target.value)} value={ethCold} className="text-white text-sm font-medium outline-none placeholder:text-sm placeholder:font-medium placeholder:text-[#939393] px-3 py-[10px] border border-cgrey-200 bg-[#141518] rounded-md" />
+                    </div>
+                </div><div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-2">
+                        <p className="text-sm font-normal text-white">BTC*</p>
+                        <input type="number" placeholder="0" onChange={(e) => setBtc(e.target.value)} value={btc} className="text-white text-sm font-medium outline-none placeholder:text-sm placeholder:font-medium placeholder:text-[#939393] px-3 py-[10px] border border-cgrey-200 bg-[#141518] rounded-md" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <p className="text-sm font-normal text-white">SOL*</p>
+                        <input type="number" placeholder="0" onChange={(e) => setSol(e.target.value)} value={sol} className="text-white text-sm font-medium outline-none placeholder:text-sm placeholder:font-medium placeholder:text-[#939393] px-3 py-[10px] border border-cgrey-200 bg-[#141518] rounded-md" />
+                    </div>
                 </div>
             </div>
-            <div className="bg-white p-3 rounded-md border cursor-pointer hover:bg-cgrey-100 hover:text-white border-[#EEEEEE] text-sm leading-4 text-center font-medium" onClick={() => handleSave()}>Save</div>
+            <div className="bg-white p-3 rounded-md border cursor-pointer hover:bg-cgrey-100 hover:text-white border-[#EEEEEE] text-sm leading-4 text-center font-medium" onClick={() => handleEdit()}>Edit User Profile</div>
         </div>
     )
 }

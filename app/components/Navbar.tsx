@@ -7,13 +7,14 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import ProfileModal from "./forms/ProfileModal";
 import AppContext from "../providers/AppContext";
+import { getUserDetails } from "../hooks/test/user-detail";
 
 const Navbar = () => {
 
     const path = usePathname();
 
     const [temp, setTemp] = useState("");
-    const { profileModalOpen, setProfileModalOpen } = useContext(AppContext);
+    const { profileModalOpen, serverID, userID, setProfileModalOpen } = useContext(AppContext);
 
     const title = () => {
         const words = temp.split(' ');
@@ -23,6 +24,11 @@ const Navbar = () => {
         const result = capitalizedWords.join(' ');
 
         return result;
+    }
+
+    const handleProfileModalOpen = () => {
+        setProfileModalOpen(true);
+        getUserDetails(serverID, userID);
     }
 
     useEffect(() => {
@@ -55,9 +61,9 @@ const Navbar = () => {
                     />
                     <p className="px-4 text-white text-base font-semibold md:block hidden">Lunatic_twister</p>
                 </div>
-                <div className="flex flex-col absolute border border-[#292A2E] rounded-lg bg-[#1D1E22] mt-2 w-[200px] items-end">
+                <div className="flex flex-col absolute border border-[#292A2E] rounded-lg bg-[#1D1E22] top-[30px] w-[200px] items-end">
                     <div className="px-3 py-[6px] hover:cursor-pointer hover:bg-[#141518] text-white border border-[#292A2E] text-base leading-6 font-semibold">Log out</div>
-                    <div className="px-3 py-[6px] hover:cursor-pointer hover:bg-[#141518] text-white border border-[#292A2E] text-base leading-6 font-semibold" onClick={() => setProfileModalOpen(!profileModalOpen)}>User Details</div>
+                    <div className="px-3 py-[6px] hover:cursor-pointer hover:bg-[#141518] text-white border border-[#292A2E] text-base leading-6 font-semibold" onClick={handleProfileModalOpen}>User Details</div>
                 </div>
             </div>
             {profileModalOpen && (

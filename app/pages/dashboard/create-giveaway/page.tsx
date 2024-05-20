@@ -10,7 +10,7 @@ import PreviewCard from "@/app/components/PreviewCard";
 import { chainList, giveawayTypeList, winningRoleList, restrictedRolesList, requiredRolesList } from "@/app/utils/_data";
 import ArrowLeft from "@/public/avatar/arrow-left.svg"
 
-const ApprovedServers: React.FC = () => {
+const CreateGiveaway: React.FC = () => {
 
     const styles: StylesConfig<DataOption, true> = {
         multiValue: (styles) => ({ ...styles, backgroundColor: '#202125', borderRadius: "10px", fontSize: "15px", padding: "1px 5px 1px 2px", gap: "0px" }),
@@ -31,10 +31,10 @@ const ApprovedServers: React.FC = () => {
 
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [expiresDate, setExpiresDate] = useState<string>("");
-    const [expiresHour, setExpiresHour] = useState<string>("");
+    const [expiresDate, setExpiresDate] = useState<string>("2024-01-01");
+    const [expiresHour, setExpiresHour] = useState<string>("00:00");
     const [chain, setChain] = useState<string>("");
-    const [quantity, setQuantity] = useState<number>(0);
+    const [quantity, setQuantity] = useState<number>(1);
     const [type, setType] = useState<string>("");
     const [winningRole, setWinningRole] = useState<string>("");
     const [restrictedRoles, setRestrictedRoles] = useState<DataOption[]>([]);
@@ -56,7 +56,10 @@ const ApprovedServers: React.FC = () => {
         setReqiuredRoles(orderOptions(newValue as DataOption[]));
     };
 
-    const handleSubmit = () => { }
+    const handleSubmit = () => {
+        console.log("handle submit");
+
+    }
 
     return (
         <div className="grid grid-cols-2 gap-8 p-8 bg-cdark-100">
@@ -71,7 +74,7 @@ const ApprovedServers: React.FC = () => {
                             alt="arrow left"
                         />
                     </div>
-                    <p className="text-white text-2xl font-semibold">Approved Servers</p>
+                    <p className="text-white text-2xl font-semibold">Create Giveaway</p>
                 </div>
                 <div className="flex flex-col gap-3 text-white">
                     {/* Title */}
@@ -185,7 +188,7 @@ const ApprovedServers: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex w-full justify-end">
-                    <div onClick={() => handleSubmit} className="flex justify-center px-8 w-fit py-3 border border-[#EEEEEE]  rounded-lg bg-white text-sm leading-4 font-medium">submit</div>
+                    <div onClick={handleSubmit} className="flex justify-center px-8 w-fit py-3 border border-[#EEEEEE]  rounded-lg bg-white text-sm leading-4 font-medium">submit</div>
                 </div>
             </div>
             <PreviewCard />
@@ -193,7 +196,7 @@ const ApprovedServers: React.FC = () => {
     );
 }
 
-export default ApprovedServers;
+export default CreateGiveaway;
 
 interface DataOption {
     value: string;

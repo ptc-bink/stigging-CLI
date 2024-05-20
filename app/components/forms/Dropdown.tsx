@@ -35,7 +35,7 @@ const Dropdown: React.FC<DropdownProps> = ({ dropdownList, placeholder, classNam
                     alt="Arrow down"
                 />}
             </div>
-            {dropdownOpen && <div className="absolute w-full cursor-pointer text-white flex flex-col mt-2 rounded-lg border border-cgrey-200">
+            {dropdownOpen && <div className="absolute w-full cursor-pointer text-white flex flex-col mt-2 rounded-lg border border-cgrey-200 z-10">
                 {dropdownList.map((item, index) => (
                     <div key={index} className={`items-center w-full px-4 py-[10px]  justify-between text-sm font-normal text-white ${className}`} onClick={() => handleSetValue(item)}>{item}</div>
                 ))}
