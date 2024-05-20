@@ -27,14 +27,16 @@ const Dashboard: React.FC<IDashboard> = () => {
     return (
         <div className="flex flex-col gap-4 p-8 bg-cdark-100">
             <div className="flex flex-col">
-                <p className="text-white text-2xl font-semibold">Dashboard</p>
-                <div className="items-center w-full grid grid-cols-2 gap-4 pt-4 text-sm realtive">
-                    <Dropdown
-                        dropdownList={dashboardDropdownList}
-                        placeholder="select"
-                        className="hover:bg-cdark-100 bg-cdark-200"
-                        callback={setChainValue}
-                    />
+                <p className="text-white text-2xl font-semibold md:block hidden">Dashboard</p>
+                <div className="items-center w-full grid md:grid-cols-2 grid-rows-2 gap-4 pt-4 text-sm">
+                    <div>
+                        <Dropdown
+                            dropdownList={dashboardDropdownList}
+                            placeholder="Select"
+                            className="hover:bg-cdark-100 bg-cdark-200"
+                            callback={setChainValue}
+                        />
+                    </div>
                     <div className="flex w-full text-sm font-normal">
                         <div className="flex flex-grow">
                             <SearchBtn
@@ -50,7 +52,7 @@ const Dashboard: React.FC<IDashboard> = () => {
                                 height="16"
                                 alt="add button"
                             />
-                            <p className="text-cdark-100 md:block">Create Giveaway</p>
+                            <p className="text-cdark-100 lg:block hidden">Create Giveaway</p>
                         </Link>
                     </div>
                 </div>

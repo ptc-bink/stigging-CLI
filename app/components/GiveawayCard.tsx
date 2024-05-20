@@ -84,7 +84,7 @@ const GiveawayCard: React.FC<GiveawayCardProps> = ({ chain, entrants, quantity, 
             </div>
             {detailOpen &&
                 <div className="flex flex-col rounded-lg">
-                    <div className="grid grid-rows-10 grid-flow-col gap-y-[1.5px] border border-cgrey-200 rounded-t-lg px-1 py-[10px] bg-transparent">
+                    <div className="grid md:grid-rows-10 md:grid-flow-col max-h-[220px] overflow-scroll grid-flow-row gap-y-[1.5px] border border-cgrey-200 rounded-t-lg px-1 py-[10px] bg-transparent">
                         {giveawayCardInfo.map((item, index) => (
                             detailItem(index + 1, item)
                         ))}
@@ -125,8 +125,8 @@ const GiveawayCard: React.FC<GiveawayCardProps> = ({ chain, entrants, quantity, 
                     )}
                 {
                     status === "active" && (
-                        <button className="flex gap-2 justify-center items-center hover:bg-cdark-200 bg-transparent outline-none border border-cgrey-200 rounded-lg px-[10px] py-4 w-fit">
-                            <p className="text-white text-sm font-normal">Edit</p>
+                        <button className="flex gap-2 justify-center items-center hover:bg-cdark-200 bg-transparent outline-none border border-cgrey-200 rounded-lg py-[10px] px-6 w-fit">
+                            <p className="text-white text-sm font-normal hidden md:block">Edit</p>
                             <Image
                                 src={Edit}
                                 width="16"

@@ -7,7 +7,7 @@ import Dropdown from "./Dropdown";
 import { marketChannelIdList, generalChannelIdList } from "@/app/utils/_data";
 
 import Cancel from "@/public/avatar/close.svg"
-import AppContext from "@/app/contexts/AppContext";
+import AppContext from "@/app/providers/AppContext";
 
 const EditServerModal: React.FC<EditServerModalProps> = ({ server, marketChannel, generalChannel }) => {
 

@@ -13,7 +13,7 @@ import AddServerModal from "@/app/components/forms/AddServerModal";
 import Add from "@/public/avatar/add.svg"
 import ArrowLeft from "@/public/avatar/arrow-left.svg"
 import Driver from "@/public/avatar/driver.svg"
-import AppContext from "@/app/contexts/AppContext";
+import AppContext from "@/app/providers/AppContext";
 
 const ApprovedServers: React.FC = () => {
 

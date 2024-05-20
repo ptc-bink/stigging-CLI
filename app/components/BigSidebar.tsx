@@ -18,7 +18,7 @@ interface SideDataProps {
     isActive: boolean
 }
 
-const Sidebar = () => {
+const BigSidebar = () => {
 
     const pathname = usePathname();
 
@@ -66,27 +66,6 @@ const Sidebar = () => {
         },
     ])
 
-    // useEffect(() => {
-    //     if (pathname !== "/") {
-    //         let tempSide: any[] = [];
-    //         for (let i = 0; i < sideData.length; i++) {
-    //             if (pathname.includes(sideData[i].link)) {
-    //                 tempSide.push({
-    //                     ...sideData[i],
-    //                     isActive: true,
-    //                 })
-    //                 setFill("white");
-    //             } else {
-    //                 tempSide.push({
-    //                     ...sideData[i],
-    //                     isActive: false
-    //                 })
-    //             }
-    //         }
-    //         setSideData(tempSide);
-    //     }
-    // }, [pathname])
-
     useEffect(() => {
         if (pathname !== "/") {
             const updatedSideData = sideData.map(item => {
@@ -105,7 +84,7 @@ const Sidebar = () => {
     }, [pathname]);
 
     return (
-        <div className="flex flex-col bg-cgrey-100">
+        <div className="flex flex-col">
             {sideData.map((side: any, index: number) => (
                 <Link key={index} href={side.link}>
                     <div className={`flex flex-col p-6 items-center justify-center cursor-pointer  hover:bg-cdark-100 ${side.isActive ? "border-r border-r-white bg-cdark-100" : ""}`}>
@@ -118,4 +97,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default BigSidebar;

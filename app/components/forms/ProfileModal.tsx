@@ -9,26 +9,26 @@ import { marketChannelIdList, generalChannelIdList } from "@/app/utils/_data";
 import Cancel from "@/public/avatar/close.svg"
 import AppContext from "@/app/providers/AppContext";
 
-const AddServerModal: React.FC<AddServerModalProps> = () => {
+const ProfileModal: React.FC<ProfileModalProps> = () => {
 
-    const { setAddServerModalOpen } = useContext(AppContext);
+    const { setProfileModalOpen } = useContext(AppContext);
     const [marketChannelId, setMarketChannelId] = useState<string>("");
     const [generalChannelId, setGeneralChannelId] = useState<string>("");
 
-    const closeAddServerModal = () => {
-        setAddServerModalOpen(false);
+    const closeProfileModal = () => {
+        setProfileModalOpen(false);
     }
 
     const handleSave = () => {
         console.log("handleSave");
-        closeAddServerModal();
+        closeProfileModal();
     }
 
     return (
         <div className="flex flex-col w-[450px] rounded-md p-6 gap-6 border border-cgrey-200 bg-cgrey-100">
             <div className="flex justify-between gap-4">
                 <p className="text-base text-white font-semibold">Server Details</p>
-                <div onClick={closeAddServerModal} className="cursor-pointer">
+                <div onClick={closeProfileModal} className="cursor-pointer">
                     <Image
                         src={Cancel}
                         width="24"
@@ -60,8 +60,8 @@ const AddServerModal: React.FC<AddServerModalProps> = () => {
     )
 }
 
-export default AddServerModal;
+export default ProfileModal;
 
-interface AddServerModalProps {
+interface ProfileModalProps {
 
 }

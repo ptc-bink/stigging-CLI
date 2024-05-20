@@ -1,4 +1,5 @@
-import Sidebar from "../components/Sidebar";
+import BigSidebar from "../components/BigSidebar";
+import SmallSidebar from "../components/SmallSidebar"
 import Navbar from "../components/Navbar";
 
 export default function RootLayout({
@@ -12,10 +13,15 @@ export default function RootLayout({
                 <Navbar />
             </div>
             <div className="flex">
-                <Sidebar />
+                <div className="md:block hidden bg-[#1D1E22]">
+                    <BigSidebar />
+                </div>
                 <div className="w-full bg-cdark-100 min-h-[calc(100vh-88px)]">
                     {children}
                 </div>
+            </div>
+            <div className="md:hidden block sticky bottom-0">
+                <SmallSidebar />
             </div>
         </body>
     );

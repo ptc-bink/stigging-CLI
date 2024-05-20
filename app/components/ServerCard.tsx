@@ -6,7 +6,7 @@ import Image from "next/image";
 import Driver from "@/public/avatar/driver.svg"
 import Avatar from "@/public/img/Avatar.png"
 import Edit from "@/public/avatar/edit.svg"
-import AppContext from "../contexts/AppContext";
+import AppContext from "../providers/AppContext";
 
 import EditServerModal from "./forms/EditServerModal";
 

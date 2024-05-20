@@ -1,9 +1,12 @@
+"use client"
+
 import React, { ReactNode, useState } from "react";
 import AppContext from "./AppContext";
 
-const AppProvider = ({ children }: { children: ReactNode }) => {
+const UserProvider = ({ children }: { children: ReactNode }) => {
   const [addServerModalOpen, setAddServerModalOpen] = useState(false);
   const [editServerModalOpen, setEditServerModalOpen] = useState(false);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
 
 
   return (
@@ -11,8 +14,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       value={{
         addServerModalOpen,
         editServerModalOpen,
+        profileModalOpen,
         setAddServerModalOpen,
         setEditServerModalOpen,
+        setProfileModalOpen,
       }}
     >
       {children}
@@ -20,4 +25,4 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default AppProvider;
+export default UserProvider;

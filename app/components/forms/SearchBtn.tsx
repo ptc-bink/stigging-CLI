@@ -18,7 +18,7 @@ const SearchBtn: React.FC<SearchBtnProps> = ({ placeholder, endContent, endConte
                         height="16"
                         alt="refresh"
                     />
-                    <span>{endContent}</span>
+                    <span className="sm:block hidden">{endContent}</span>
                 </div>
             </div>
         </div>

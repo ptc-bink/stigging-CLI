@@ -9,7 +9,7 @@ import Cancel from "@/public/avatar/close-circle.svg"
 import Dropdown from "./forms/Dropdown";
 import SearchBtn from "./forms/SearchBtn";
 import Modal from "./forms/AddServerModal";
-import AppContext from "../contexts/AppContext";
+import AppContext from "../providers/AppContext";
 
 const PageForm: React.FC<PageFormProps> = ({ dropdownList, placeholder, endContent, endContentImg, addBtnContent }) => {
 

@@ -40,7 +40,7 @@ const ApprovedServers: React.FC = () => {
     const [restrictedRoles, setRestrictedRoles] = useState<DataOption[]>([]);
     const [requiredAllRoles, setReqiuredAllRoles] = useState<boolean>(false);
     const [requiredRoles, setReqiuredRoles] = useState<DataOption[]>([]);
-    const [price, setPrice] = useState<number>();
+    const [price, setPrice] = useState<number>(0.00001);
     const [links, setLinks] = useState<string>("");
     const [requirements, setRequirements] = useState<string>("");
 
@@ -170,7 +170,7 @@ const ApprovedServers: React.FC = () => {
                     {/* Price */}
                     <div className="flex flex-col gap-2">
                         <p className="text-sm font-normal text-white">Price*</p>
-                        <input type="number" placeholder="0" value={price} onChange={(e) => setPrice(e.target.valueAsNumber)} className="text-white text-sm font-medium outline-none placeholder:text-sm placeholder:font-medium placeholder:text-[#939393] px-3 py-[10px] border border-cgrey-200 bg-[#141518] rounded-md" />
+                        <input type="number" step="0.00001" placeholder="0.00001" min="0.00001" value={price} onChange={(e) => setPrice(e.target.valueAsNumber)} className="text-white text-sm font-medium outline-none placeholder:text-sm placeholder:font-medium placeholder:text-[#939393] px-3 py-[10px] border border-cgrey-200 bg-[#141518] rounded-md" />
                     </div>
                     {/* Links & Requirements */}
                     <div className="grid grid-cols-2 gap-3">
