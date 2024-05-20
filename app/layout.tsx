@@ -6,6 +6,7 @@ import "./globals.css";
 import Providers from "./providers/UserProvider";
 import { getServerSession } from "next-auth";
 import authOptions from "./api/auth/[...nextauth]/authOptions";
+import { useSession } from "next-auth/react";
 
 const inter = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -22,6 +23,9 @@ export default async function RootLayout({
 }>) {
 
   const session = await getServerSession(authOptions);
+  // console.log("session ====> ", session);
+  // const session = useSession();
+  
 
   return (
     <html lang="en">
