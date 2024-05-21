@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import UserProvider from "./providers/AppProvider";
-
-import "./globals.css";
 import Providers from "./providers/UserProvider";
-import { getServerSession } from "next-auth";
-import authOptions from "./api/auth/[...nextauth]/authOptions";
-import { useSession } from "next-auth/react";
+import "./globals.css";
 
 const inter = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -19,18 +15,12 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-
 }>) {
-
-  const session = await getServerSession(authOptions);
-  // console.log("session ====> ", session);
-  // const session = useSession();
-  
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers session={session}>
+        <Providers>
           <UserProvider>
             {children}
           </UserProvider>

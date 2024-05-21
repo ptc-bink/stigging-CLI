@@ -6,13 +6,12 @@ import type { ReactNode } from "react";
 
 interface ProvidersProps {
     children: ReactNode;
-    session: Session | null;
 }
 
-const Providers = ({ children, session }: ProvidersProps) => {
+const Providers = ({ children }: ProvidersProps) => {
 
     return (
-        <SessionProvider session={session}>
+        <SessionProvider>
             {children}
         </SessionProvider>
     );
